@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto de Robótica Humanoide | Camila Isel López Aguilón</title>
+<style>
+/* ==== ESTILOS GENERALES ==== */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background: #0b0f1a;
+  color: #e2e8f0;
+  line-height: 1.8;
+}
+
+/* ==== CABECERA ==== */
+header {
+  background: linear-gradient(135deg, #007bff, #00c8ff);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+  box-shadow: 0 0 25px rgba(0, 183, 255, 0.5);
+}
+header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+header p {
+  font-size: 1.2em;
+}
+
+/* ==== NAVEGACIÓN ==== */
+nav {
+  background: #111a2e;
+  text-align: center;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav a {
+  color: #00bfff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: white;
+  border-bottom: 2px solid #00bfff;
+}
+
+/* ==== SECCIONES ==== */
+section {
+  padding: 70px 10%;
+}
+section h2 {
+  color: #00bfff;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+section p {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+section img {
+  display: block;
+  max-width: 500px;
+  margin: 30px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 183, 255, 0.4);
+}
+
+/* ==== TARJETAS ==== */
+.tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.tarjeta {
+  background: #18253e;
+  padding: 25px;
+  border-radius: 15px;
+  width: 280px;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(0, 183, 255, 0.2);
+}
+.tarjeta:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 30px rgba(0, 183, 255, 0.5);
+}
+.tarjeta h3 {
+  color: #00bfff;
+}
+
+/* ==== CUESTIONARIO ==== */
+.pregunta {
+  background: #16243b;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.pregunta p {
+  color: #00bfff;
+  font-weight: bold;
+}
+button {
+  background: linear-gradient(120deg, #007bff, #00bfff);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+  display: block;
+  margin: 30px auto;
+  font-size: 1.1em;
+}
+button:hover {
+  background: linear-gradient(120deg, #009eff, #0066ff);
+}
+#resultado {
+  text-align: center;
+  font-size: 1.2em;
+  color: #00ffcc;
+  margin-top: 20px;
+}
+
+/* ==== FOOTER ==== */
+footer {
+  text-align: center;
+  background: #111a2e;
+  padding: 25px;
+  color: #a0aec0;
+  font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Robótica Humanoide</h1>
+  <p>Proyecto de <strong>Camila Isel López Aguilón</strong></p>
+  <p><em>Escuela Secundaria Técnica “Marcos Gómez Nuñes”</em></p>
+</header>
+
+<nav>
+  <a href="#introduccion">Introducción</a>
+  <a href="#historia">Historia</a>
+  <a href="#tecnologia">Tecnología</a>
+  <a href="#aplicaciones">Aplicaciones</a>
+  <a href="#impacto">Impacto</a>
+  <a href="#futuro">Futuro</a>
+  <a href="#cuestionario">Cuestionario</a>
+</nav>
+
+<section id="introduccion">
+  <h2>Introducción</h2>
+  <p>
+    La robótica humanoide es una de las ramas más fascinantes y complejas de la ingeniería moderna. 
+    Su objetivo es diseñar y construir robots que imiten el cuerpo, los movimientos y el comportamiento humano.
+    Estos robots pueden caminar, hablar, reconocer rostros e incluso expresar emociones.
+  </p>
+  <p>
+    Los humanoides no solo representan un avance tecnológico, sino también una herramienta educativa, médica y social. 
+    Son el resultado de la unión de disciplinas como la mecánica, electrónica, informática, y la inteligencia artificial.
+  </p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sophia_robot_2018-10-16.jpg" alt="Robot Sophia">
+</section>
+
+<section id="historia">
+  <h2>Historia</h2>
+  <p>
+    El sueño de crear seres mecánicos con forma humana se remonta a miles de años atrás. En la mitología griega ya se hablaba de autómatas creados por Hefesto. 
+    Durante el Renacimiento, <strong>Leonardo da Vinci</strong> diseñó un caballero mecánico capaz de mover brazos y cabeza.
+  </p>
+  <p>
+    En el siglo XX, el desarrollo de la electrónica permitió la aparición de robots más complejos. 
+    El robot <strong>ASIMO</strong> de Honda (2000) fue un hito al lograr caminar de forma autónoma y reconocer personas.
+  </p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/ASIMO_2011.jpg" alt="Robot ASIMO">
+</section>
+
+<section id="tecnologia">
+  <h2>Tecnología</h2>
+  <p>
+    Un robot humanoide combina distintos sistemas tecnológicos:
+  </p>
+  <ul>
+    <li><strong>Visión artificial:</strong> permite detectar rostros y objetos mediante cámaras y sensores.</li>
+    <li><strong>Actuadores:</strong> imitan los músculos humanos y permiten movimientos precisos.</li>
+    <li><strong>Sensores de equilibrio:</strong> ayudan a caminar y mantener estabilidad.</li>
+    <li><strong>Procesamiento de voz:</strong> para comunicarse en lenguaje natural.</li>
+    <li><strong>Inteligencia artificial:</strong> les permite aprender y adaptarse al entorno.</li>
+  </ul>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Pepper_robot.jpg" alt="Robot Pepper">
+</section>
+
+<section id="aplicaciones">
+  <h2>Aplicaciones</h2>
+  <p>
+    Hoy en día, los robots humanoides se utilizan en distintos campos:
+  </p>
+  <div class="tarjetas">
+    <div class="tarjeta">
+      <h3>Educación</h3>
+      <p>Enseñan programación, ciencia y robótica a estudiantes de todo el mundo.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Salud</h3>
+      <p>Ayudan en terapias físicas y acompañan a pacientes mayores o con discapacidad.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Exploración</h3>
+      <p>Son capaces de realizar misiones en ambientes extremos, como el espacio o el océano.</p>
+    </div>
+    <div class="tarjeta">
+      <h3>Industria</h3>
+      <p>Realizan tareas repetitivas con alta precisión y sin descanso.</p>
+    </div>
+  </div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/NASA_R5_Valkyrie_robot.jpg" alt="Robot Valkyrie">
+</section>
+
+<section id="impacto">
+  <h2>Impacto Social y Ético</h2>
+  <p>
+    La robótica humanoide plantea retos sociales. Si bien puede mejorar la calidad de vida y aumentar la productividad, 
+    también genera preocupación por la sustitución laboral y la ética de las máquinas inteligentes.
+  </p>
+  <p>
+    Es fundamental que el desarrollo tecnológico esté acompañado de valores humanos, educación y responsabilidad social.
+  </p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Sophia_Hanson_Robotics.jpg" alt="Robot Sophia Hanson Robotics">
+</section>
+
+<section id="futuro">
+  <h2>El Futuro de la Robótica Humanoide</h2>
+  <p>
+    En las próximas décadas, los robots humanoides serán parte de la vida cotidiana. 
+    Asistirán a las personas mayores, ayudarán en emergencias y acompañarán a los estudiantes.
+  </p>
+  <p>
+    Su desarrollo depende de la inteligencia artificial y del esfuerzo de jóvenes talentos que buscan cambiar el mundo, 
+    como <strong>Camila Isel López Aguilón</strong>, estudiante de la Escuela Secundaria Técnica “Marcos Gómez Nuñes”.
+  </p>
+</section>
+
+<section id="cuestionario">
+  <h2>Cuestionario Interactivo</h2>
+  <div id="preguntas"></div>
+  <button onclick="verificar()">Enviar respuestas</button>
+  <p id="resultado"></p>
+</section>
+
+<footer>
+  © 2025 | Proyecto de Robótica Humanoide — Camila Isel López Aguilón | Escuela Secundaria Técnica “Marcos Gómez Nuñes”
+</footer>
+
+<script>
+const preguntas = [
+  ["¿Qué busca la robótica humanoide?", ["Imitar las capacidades humanas", "Construir autos", "Fabricar teléfonos"], "a"],
+  ["¿Quién diseñó el primer autómata?", ["Leonardo da Vinci", "Einstein", "Tesla"], "a"],
+  ["¿Qué robot fue desarrollado por Honda?", ["ASIMO", "Pepper", "Atlas"], "a"],
+  ["¿Qué permite la visión artificial?", ["Reconocer rostros y objetos", "Mover brazos", "Hablar"], "a"],
+  ["¿En qué campo ayuda la robótica humanoide?", ["Educación y salud", "Moda", "Agricultura"], "a"],
+  ["¿Qué reto ético plantea la robótica?", ["Sustitución de empleos", "Clima", "Ruido"], "a"],
+  ["¿Qué representa Camila Isel López Aguilón?", ["El futuro de la ciencia mexicana", "Una atleta", "Una cantante"], "a"],
+  ["¿Qué escuela realiza este proyecto?", ["Marcos Gómez Nuñes", "UNAM", "Tecnológico de Monterrey"], "a"]
+];
+
+window.onload = function() {
+  const div = document.getElementById("preguntas");
+  preguntas.forEach((p, i) => {
+    div.innerHTML += `
+      <div class='pregunta'>
+        <p>${i+1}. ${p[0]}</p>
+        <label><input type='radio' name='q${i}' value='a'> ${p[1][0]}</label><br>
+        <label><input type='radio' name='q${i}' value='b'> ${p[1][1]}</label><br>
+        <label><input type='radio' name='q${i}' value='c'> ${p[1][2]}</label>
+      </div>`;
+  });
+}
+
+function verificar() {
+  let aciertos = 0;
+  for (let i=0;i<preguntas.length;i++) {
+    const seleccion = document.querySelector(`input[name='q${i}']:checked`);
+    if (seleccion && seleccion.value === preguntas[i][2]) aciertos++;
+  }
+  const res = document.getElementById("resultado");
+  res.textContent = `Has contestado correctamente ${aciertos} de ${preguntas.length} preguntas.`;
+  if(aciertos===preguntas.length) res.textContent += " 🎉 ¡Excelente!";
+}
+</script>
+</body>
+</html>
