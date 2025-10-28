@@ -192,6 +192,60 @@
       color: #fff;
     }
 
+    /* ===== Modal ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-content {
+      background: rgba(20,20,40,0.95);
+      border: 2px solid #ff00ff;
+      border-radius: 15px;
+      padding: 30px;
+      width: 80%;
+      max-width: 600px;
+      color: #00ffe0;
+      box-shadow: 0 0 40px #00ffea, 0 0 80px #ff00ff;
+      animation: fadeIn 0.4s ease;
+      text-align: center;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #ff00ff;
+      margin-top: 0;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: #ff00ff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
@@ -208,35 +262,23 @@
     <h1>Robótica Humanoide y su Impacto</h1>
     <p>La robótica humanoide estudia robots que imitan el comportamiento humano, aplicándose en medicina, educación, industria y más.</p>
   </header>
-<!-- ===== Header ===== -->
-<header>
-  <h1>Robótica Humanoide y su Impacto</h1>
-  <p>La robótica humanoide estudia robots que imitan el comportamiento humano, aplicándose en medicina, educación, industria y más.</p>
-</header>
 
-<!-- ===== Información personal ===== -->
-<section id="personal-info" style="text-align:center; margin: 30px 0; color:#00ffe0;">
-  <p style="font-size:1.2rem; max-width:600px; margin:0 auto; color:#00ffe0;">
-    Centro Educativo: Marco Gomez Nuñes
-  </p>
-  <p style="font-size:1.5rem; font-family: 'Orbitron', sans-serif; color:#ff00ff;">
-    [Tu nombre aquí]
-  </p>
-</section>
-
-<!-- ===== Main tarjetas ===== -->
-<main>
-  ...
-</main>
+  <!-- ===== Información personal ===== -->
+  <section id="personal-info" style="text-align:center; margin: 30px 0; color:#00ffe0;">
+    <p style="font-size:1.2rem; max-width:600px; margin:0 auto; color:#00ffe0;">
+      Centro Educativo: Marco Gomez Nuñes
+    </p>
+    <p style="font-size:1.5rem; font-family: 'Orbitron', sans-serif; color:#ff00ff;">
+      [CAMILA ISEL LOPEZ AGUILLON]
+    </p>
+  </section>
 
   <!-- ===== Main tarjetas ===== -->
   <main>
     <div class="card"><h2>Historia de la robótica</h2><p>Los primeros autómatas se remontan a la antigüedad...</p></div>
     <div class="card"><h2>Inteligencia artificial</h2><p>El aprendizaje automático permite que los robots humanoides...</p></div>
     <div class="card"><h2>Sensores y percepción</h2><p>Los robots utilizan sensores táctiles, de movimiento y visión...</p></div>
-
     <div class="card" id="important"><h2>Aplicaciones médicas</h2><p>Los robots humanoides se usan en terapias físicas y asistencia a personas.</p></div>
-
     <div class="card"><h2>Robots sociales</h2><p>Diseñados para interactuar con personas y mejorar la experiencia social.</p></div>
     <div class="card"><h2>Diseño ergonómico</h2><p>La apariencia influye en la aceptación social y funcionalidad.</p></div>
 	<div class="card"><h2>Robots para educación</h2><p>Se usan para enseñar programación, matemáticas y habilidades sociales en aulas de todo el mundo.</p></div>
@@ -264,13 +306,20 @@
   <!-- ===== Botón volver arriba ===== -->
   <button id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ Arriba</button>
 
+  <!-- ===== Modal de información ===== -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2 id="modalTitle">Título</h2>
+      <p id="modalText">Aquí irá la información adicional sobre el tema.</p>
+    </div>
+  </div>
+
   <script>
     // Scroll reveal
     const cards = document.querySelectorAll('.card');
-
     const revealCards = () => {
       const triggerBottom = window.innerHeight * 0.85;
-
       cards.forEach(card => {
         const cardTop = card.getBoundingClientRect().top;
         if(cardTop < triggerBottom){
@@ -280,9 +329,39 @@
         }
       });
     }
-
     window.addEventListener('scroll', revealCards);
     window.addEventListener('load', revealCards);
+
+    // --- Modal de información ---
+    const modal = document.getElementById("infoModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalText = document.getElementById("modalText");
+    const closeBtn = document.querySelector(".close-btn");
+
+    // Información adicional
+    const extraInfo = {
+      "Historia de la robótica": "Desde los autómatas griegos hasta los robots modernos, la historia de la robótica muestra cómo la humanidad ha buscado replicar sus propias habilidades mediante máquinas.",
+      "Inteligencia artificial": "La IA permite a los robots aprender de su entorno y tomar decisiones, utilizando algoritmos de aprendizaje profundo y redes neuronales.",
+      "Sensores y percepción": "Los sensores otorgan a los robots la capacidad de ver, oír y sentir, procesando datos en tiempo real para moverse e interactuar.",
+      "Aplicaciones médicas": "En hospitales, los robots ayudan en cirugías de precisión, rehabilitación y atención a pacientes con movilidad reducida.",
+      "Robots sociales": "Diseñados para interactuar y comunicarse de forma natural, los robots sociales pueden asistir en educación, terapia o atención al cliente.",
+      "Diseño ergonómico": "La forma y materiales del robot influyen en su eficiencia, seguridad y aceptación por parte de los humanos."
+    };
+
+    // Evento al hacer clic en una tarjeta
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        const title = card.querySelector("h2").textContent;
+        modalTitle.textContent = title;
+        modalText.textContent = extraInfo[title] || "Información adicional no disponible.";
+        modal.style.display = "flex";
+      });
+    });
+
+    // Cerrar modal
+    closeBtn.addEventListener("click", () => modal.style.display = "none");
+    window.addEventListener("click", (e) => { if (e.target === modal) modal.style.display = "none"; }); 
+	
   </script>
 
 </body>
