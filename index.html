@@ -1,299 +1,289 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proyecto de Robótica Humanoide | Camila Isel López Aguilón</title>
-<style>
-/* ==== ESTILOS GENERALES ==== */
-body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  background: #0b0f1a;
-  color: #e2e8f0;
-  line-height: 1.8;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robótica Humanoide</title>
 
-/* ==== CABECERA ==== */
-header {
-  background: linear-gradient(135deg, #007bff, #00c8ff);
-  color: white;
-  text-align: center;
-  padding: 80px 20px;
-  box-shadow: 0 0 25px rgba(0, 183, 255, 0.5);
-}
-header h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-}
-header p {
-  font-size: 1.2em;
-}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto&display=swap" rel="stylesheet">
 
-/* ==== NAVEGACIÓN ==== */
-nav {
-  background: #111a2e;
-  text-align: center;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-nav a {
-  color: #00bfff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-nav a:hover {
-  color: white;
-  border-bottom: 2px solid #00bfff;
-}
+  <style>
+    /* ===== Scroll Smooth ===== */
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* ==== SECCIONES ==== */
-section {
-  padding: 70px 10%;
-}
-section h2 {
-  color: #00bfff;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-section p {
-  margin-bottom: 15px;
-  font-size: 1.1em;
-}
-section img {
-  display: block;
-  max-width: 500px;
-  margin: 30px auto;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(0, 183, 255, 0.4);
-}
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #111;
+      color: #eee;
+      overflow-x: hidden;
+    }
 
-/* ==== TARJETAS ==== */
-.tarjetas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-}
-.tarjeta {
-  background: #18253e;
-  padding: 25px;
-  border-radius: 15px;
-  width: 280px;
-  transition: 0.3s;
-  box-shadow: 0 0 15px rgba(0, 183, 255, 0.2);
-}
-.tarjeta:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 30px rgba(0, 183, 255, 0.5);
-}
-.tarjeta h3 {
-  color: #00bfff;
-}
+    /* ===== Fondo animado tipo ondas ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(255,0,0,0.2), transparent 70%);
+      animation: wave 15s linear infinite;
+      z-index: -1;
+    }
 
-/* ==== CUESTIONARIO ==== */
-.pregunta {
-  background: #16243b;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-.pregunta p {
-  color: #00bfff;
-  font-weight: bold;
-}
-button {
-  background: linear-gradient(120deg, #007bff, #00bfff);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 25px;
-  cursor: pointer;
-  display: block;
-  margin: 30px auto;
-  font-size: 1.1em;
-}
-button:hover {
-  background: linear-gradient(120deg, #009eff, #0066ff);
-}
-#resultado {
-  text-align: center;
-  font-size: 1.2em;
-  color: #00ffcc;
-  margin-top: 20px;
-}
+    @keyframes wave {
+      0% { transform: translateX(0) translateY(0) rotate(0deg); }
+      50% { transform: translateX(-50px) translateY(20px) rotate(5deg); }
+      100% { transform: translateX(0) translateY(0) rotate(0deg); }
+    }
 
-/* ==== FOOTER ==== */
-footer {
-  text-align: center;
-  background: #111a2e;
-  padding: 25px;
-  color: #a0aec0;
-  font-size: 0.9em;
-}
-</style>
+    /* ===== Header ===== */
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: rgba(0,0,0,0.8);
+      color: #ff0055;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px #ff0055, 0 0 20px #ff00ff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 10px auto 0 auto;
+    }
+
+    /* ===== Main & tarjetas ===== */
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px;
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(10,10,30,0.8);
+      border-radius: 16px;
+      border: 2px solid transparent;
+      padding: 24px;
+      width: 280px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+      color: #00ffe0;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: all 0.6s ease-out;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) rotateY(5deg) scale(1.05);
+      box-shadow: 0 0 40px #00ffea, 0 0 80px #ff00ff;
+      border-color: #ff00ff;
+      background: linear-gradient(135deg, rgba(10,10,30,0.9), rgba(30,0,60,0.9));
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      border-radius: 16px;
+      border: 2px solid transparent;
+      background: linear-gradient(90deg, #00ffea, #ff00ff, #00ffea, #ff00ff);
+      background-size: 300% 300%;
+      animation: neonBorder 4s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes neonBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-top: 0;
+      color: #ff00ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+      animation: titleGlow 2s infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% { text-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffea; }
+      50% { text-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffea; }
+      100% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffea; }
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== Scroll reveal ===== */
+    .card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ===== Botón volver arriba ===== */
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #ff00ff;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff00ff;
+      font-size: 1rem;
+      z-index: 100;
+      transition: all 0.3s;
+    }
+
+    #topBtn:hover {
+      background: #ff33ff;
+      box-shadow: 0 0 25px #ff33ff;
+      transform: scale(1.1);
+    }
+
+    /* ===== Clip navegación ===== */
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 100;
+    }
+
+    nav button {
+      background: #00ffea;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #111;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    nav button:hover {
+      background: #ff00ff;
+      color: #fff;
+    }
+
+  </style>
 </head>
 <body>
 
+  <!-- ===== Clip navegación ===== -->
+  <nav>
+    <button onclick="document.getElementById('important').scrollIntoView({behavior:'smooth'});">
+      Ir a Información Importante
+    </button>
+  </nav>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <h1>Robótica Humanoide y su Impacto</h1>
+    <p>La robótica humanoide estudia robots que imitan el comportamiento humano, aplicándose en medicina, educación, industria y más.</p>
+  </header>
+<!-- ===== Header ===== -->
 <header>
-  <h1>Robótica Humanoide</h1>
-  <p>Proyecto de <strong>Camila Isel López Aguilón</strong></p>
-  <p><em>Escuela Secundaria Técnica “Marcos Gómez Nuñes”</em></p>
+  <h1>Robótica Humanoide y su Impacto</h1>
+  <p>La robótica humanoide estudia robots que imitan el comportamiento humano, aplicándose en medicina, educación, industria y más.</p>
 </header>
 
-<nav>
-  <a href="#introduccion">Introducción</a>
-  <a href="#historia">Historia</a>
-  <a href="#tecnologia">Tecnología</a>
-  <a href="#aplicaciones">Aplicaciones</a>
-  <a href="#impacto">Impacto</a>
-  <a href="#futuro">Futuro</a>
-  <a href="#cuestionario">Cuestionario</a>
-</nav>
-
-<section id="introduccion">
-  <h2>Introducción</h2>
-  <p>
-    La robótica humanoide es una de las ramas más fascinantes y complejas de la ingeniería moderna. 
-    Su objetivo es diseñar y construir robots que imiten el cuerpo, los movimientos y el comportamiento humano.
-    Estos robots pueden caminar, hablar, reconocer rostros e incluso expresar emociones.
+<!-- ===== Información personal ===== -->
+<section id="personal-info" style="text-align:center; margin: 30px 0; color:#00ffe0;">
+  <p style="font-size:1.2rem; max-width:600px; margin:0 auto; color:#00ffe0;">
+    Centro Educativo: Marco Gomez Nuñes
   </p>
-  <p>
-    Los humanoides no solo representan un avance tecnológico, sino también una herramienta educativa, médica y social. 
-    Son el resultado de la unión de disciplinas como la mecánica, electrónica, informática, y la inteligencia artificial.
-  </p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sophia_robot_2018-10-16.jpg" alt="Robot Sophia">
-</section>
-
-<section id="historia">
-  <h2>Historia</h2>
-  <p>
-    El sueño de crear seres mecánicos con forma humana se remonta a miles de años atrás. En la mitología griega ya se hablaba de autómatas creados por Hefesto. 
-    Durante el Renacimiento, <strong>Leonardo da Vinci</strong> diseñó un caballero mecánico capaz de mover brazos y cabeza.
-  </p>
-  <p>
-    En el siglo XX, el desarrollo de la electrónica permitió la aparición de robots más complejos. 
-    El robot <strong>ASIMO</strong> de Honda (2000) fue un hito al lograr caminar de forma autónoma y reconocer personas.
-  </p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/ASIMO_2011.jpg" alt="Robot ASIMO">
-</section>
-
-<section id="tecnologia">
-  <h2>Tecnología</h2>
-  <p>
-    Un robot humanoide combina distintos sistemas tecnológicos:
-  </p>
-  <ul>
-    <li><strong>Visión artificial:</strong> permite detectar rostros y objetos mediante cámaras y sensores.</li>
-    <li><strong>Actuadores:</strong> imitan los músculos humanos y permiten movimientos precisos.</li>
-    <li><strong>Sensores de equilibrio:</strong> ayudan a caminar y mantener estabilidad.</li>
-    <li><strong>Procesamiento de voz:</strong> para comunicarse en lenguaje natural.</li>
-    <li><strong>Inteligencia artificial:</strong> les permite aprender y adaptarse al entorno.</li>
-  </ul>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Pepper_robot.jpg" alt="Robot Pepper">
-</section>
-
-<section id="aplicaciones">
-  <h2>Aplicaciones</h2>
-  <p>
-    Hoy en día, los robots humanoides se utilizan en distintos campos:
-  </p>
-  <div class="tarjetas">
-    <div class="tarjeta">
-      <h3>Educación</h3>
-      <p>Enseñan programación, ciencia y robótica a estudiantes de todo el mundo.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>Salud</h3>
-      <p>Ayudan en terapias físicas y acompañan a pacientes mayores o con discapacidad.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>Exploración</h3>
-      <p>Son capaces de realizar misiones en ambientes extremos, como el espacio o el océano.</p>
-    </div>
-    <div class="tarjeta">
-      <h3>Industria</h3>
-      <p>Realizan tareas repetitivas con alta precisión y sin descanso.</p>
-    </div>
-  </div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/NASA_R5_Valkyrie_robot.jpg" alt="Robot Valkyrie">
-</section>
-
-<section id="impacto">
-  <h2>Impacto Social y Ético</h2>
-  <p>
-    La robótica humanoide plantea retos sociales. Si bien puede mejorar la calidad de vida y aumentar la productividad, 
-    también genera preocupación por la sustitución laboral y la ética de las máquinas inteligentes.
-  </p>
-  <p>
-    Es fundamental que el desarrollo tecnológico esté acompañado de valores humanos, educación y responsabilidad social.
-  </p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Sophia_Hanson_Robotics.jpg" alt="Robot Sophia Hanson Robotics">
-</section>
-
-<section id="futuro">
-  <h2>El Futuro de la Robótica Humanoide</h2>
-  <p>
-    En las próximas décadas, los robots humanoides serán parte de la vida cotidiana. 
-    Asistirán a las personas mayores, ayudarán en emergencias y acompañarán a los estudiantes.
-  </p>
-  <p>
-    Su desarrollo depende de la inteligencia artificial y del esfuerzo de jóvenes talentos que buscan cambiar el mundo, 
-    como <strong>Camila Isel López Aguilón</strong>, estudiante de la Escuela Secundaria Técnica “Marcos Gómez Nuñes”.
+  <p style="font-size:1.5rem; font-family: 'Orbitron', sans-serif; color:#ff00ff;">
+    [Tu nombre aquí]
   </p>
 </section>
 
-<section id="cuestionario">
-  <h2>Cuestionario Interactivo</h2>
-  <div id="preguntas"></div>
-  <button onclick="verificar()">Enviar respuestas</button>
-  <p id="resultado"></p>
-</section>
+<!-- ===== Main tarjetas ===== -->
+<main>
+  ...
+</main>
 
-<footer>
-  © 2025 | Proyecto de Robótica Humanoide — Camila Isel López Aguilón | Escuela Secundaria Técnica “Marcos Gómez Nuñes”
-</footer>
+  <!-- ===== Main tarjetas ===== -->
+  <main>
+    <div class="card"><h2>Historia de la robótica</h2><p>Los primeros autómatas se remontan a la antigüedad...</p></div>
+    <div class="card"><h2>Inteligencia artificial</h2><p>El aprendizaje automático permite que los robots humanoides...</p></div>
+    <div class="card"><h2>Sensores y percepción</h2><p>Los robots utilizan sensores táctiles, de movimiento y visión...</p></div>
 
-<script>
-const preguntas = [
-  ["¿Qué busca la robótica humanoide?", ["Imitar las capacidades humanas", "Construir autos", "Fabricar teléfonos"], "a"],
-  ["¿Quién diseñó el primer autómata?", ["Leonardo da Vinci", "Einstein", "Tesla"], "a"],
-  ["¿Qué robot fue desarrollado por Honda?", ["ASIMO", "Pepper", "Atlas"], "a"],
-  ["¿Qué permite la visión artificial?", ["Reconocer rostros y objetos", "Mover brazos", "Hablar"], "a"],
-  ["¿En qué campo ayuda la robótica humanoide?", ["Educación y salud", "Moda", "Agricultura"], "a"],
-  ["¿Qué reto ético plantea la robótica?", ["Sustitución de empleos", "Clima", "Ruido"], "a"],
-  ["¿Qué representa Camila Isel López Aguilón?", ["El futuro de la ciencia mexicana", "Una atleta", "Una cantante"], "a"],
-  ["¿Qué escuela realiza este proyecto?", ["Marcos Gómez Nuñes", "UNAM", "Tecnológico de Monterrey"], "a"]
-];
+    <div class="card" id="important"><h2>Aplicaciones médicas</h2><p>Los robots humanoides se usan en terapias físicas y asistencia a personas.</p></div>
 
-window.onload = function() {
-  const div = document.getElementById("preguntas");
-  preguntas.forEach((p, i) => {
-    div.innerHTML += `
-      <div class='pregunta'>
-        <p>${i+1}. ${p[0]}</p>
-        <label><input type='radio' name='q${i}' value='a'> ${p[1][0]}</label><br>
-        <label><input type='radio' name='q${i}' value='b'> ${p[1][1]}</label><br>
-        <label><input type='radio' name='q${i}' value='c'> ${p[1][2]}</label>
-      </div>`;
-  });
-}
+    <div class="card"><h2>Robots sociales</h2><p>Diseñados para interactuar con personas y mejorar la experiencia social.</p></div>
+    <div class="card"><h2>Diseño ergonómico</h2><p>La apariencia influye en la aceptación social y funcionalidad.</p></div>
+	<div class="card"><h2>Robots para educación</h2><p>Se usan para enseñar programación, matemáticas y habilidades sociales en aulas de todo el mundo.</p></div>
 
-function verificar() {
-  let aciertos = 0;
-  for (let i=0;i<preguntas.length;i++) {
-    const seleccion = document.querySelector(`input[name='q${i}']:checked`);
-    if (seleccion && seleccion.value === preguntas[i][2]) aciertos++;
-  }
-  const res = document.getElementById("resultado");
-  res.textContent = `Has contestado correctamente ${aciertos} de ${preguntas.length} preguntas.`;
-  if(aciertos===preguntas.length) res.textContent += " 🎉 ¡Excelente!";
-}
-</script>
+<div class="card"><h2>Robots en la industria</h2><p>Automatizan procesos de manufactura, ensamblaje y logística, mejorando eficiencia y seguridad.</p></div>
+
+<div class="card"><h2>Robots en el hogar</h2><p>Asisten en tareas domésticas como limpieza, vigilancia y entretenimiento, facilitando la vida cotidiana.</p></div>
+
+<div class="card"><h2>Robots de asistencia médica</h2><p>Ayudan en cirugías precisas, rehabilitación y monitoreo de pacientes.</p></div>
+
+<div class="card"><h2>Robots exploradores</h2><p>Se envían a lugares peligrosos o inaccesibles, como el espacio, océanos profundos o zonas de desastre.</p></div>
+
+<div class="card"><h2>Robots de entretenimiento</h2><p>Se utilizan en parques temáticos, espectáculos y videojuegos para interacción con personas.</p></div>
+
+<div class="card"><h2>Robots autónomos</h2><p>Pueden tomar decisiones sin intervención humana, utilizando sensores y algoritmos avanzados.</p></div>
+
+<div class="card"><h2>Robots para rehabilitación</h2><p>Ayudan a personas con movilidad reducida a recuperar fuerza y coordinación mediante ejercicios guiados.</p></div>
+
+<div class="card"><h2>Robots de investigación social</h2><p>Estudian la interacción humano-robot y contribuyen al diseño de mejores interfaces y sistemas.</p></div>
+
+<div class="card"><h2>Innovaciones en materiales</h2><p>Se desarrollan materiales ligeros y resistentes que permiten construir robots más seguros y eficientes.</p></div>
+
+  </main>
+
+  <!-- ===== Botón volver arriba ===== -->
+  <button id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ Arriba</button>
+
+  <script>
+    // Scroll reveal
+    const cards = document.querySelectorAll('.card');
+
+    const revealCards = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if(cardTop < triggerBottom){
+          card.classList.add('show');
+        } else {
+          card.classList.remove('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealCards);
+    window.addEventListener('load', revealCards);
+  </script>
+
 </body>
 </html>
